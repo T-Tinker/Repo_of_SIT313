@@ -1,0 +1,47 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css/onsenui.css">
+	<link rel="stylesheet" href="css/onsen-css-components.min.css">
+	<script src="js/onsenui.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+<ons-navigator id="homeNavigator">
+	<ons-page>
+		<ons-toolbar>
+			<div class="center">Calendar</div>
+		</ons-toolbar>
+		<ons-tabbar position="auto">
+			<ons-tab page="homeNavigator.html" active icon="ion-home" label="Home"></ons-tab>
+			<ons-tab icon="ion-calendar" label="Calendar" badge="" page="calendar.html"></ons-tab>
+			<ons-tab icon="ion-ios-cog" label="Settings" page="settings.html"></ons-tab>
+		</ons-tabbar>
+	</ons-page>
+</ons-navigator>
+
+<template id="homeNavigator.html">
+	<ons-page>
+	<div id="template1">
+
+	</div>
+	</ons-page>
+</template>
+
+<template id="calendar.html">
+	<ons-page id="calendar">
+	<div id="template2">
+
+	</div>
+	</ons-page>
+</template>
+
+<template id="settings.html">
+	<ons-page id="calendar">
+		<div id="template3">
+
+		</div>
+	</ons-page>
+</template>
+</body>
+</html>

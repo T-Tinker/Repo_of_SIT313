@@ -1,0 +1,11 @@
+.mybutton{
+    background-color: aqua;
+}
+
+.myline{
+
+}
+
+.myline tr:hover{
+    background-color: red;
+}
