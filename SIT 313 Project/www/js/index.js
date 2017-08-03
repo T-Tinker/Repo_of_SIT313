@@ -1,200 +1,234 @@
 //a listener to load a new page, and different load function will load different page, i will write the page inside the listener
-
 document.addEventListener('init', function (event) {
-    if (event.target.id === 'eventPage') {
-        /* original html
-         <ons-list>
-         <ons-list-header>Event Name</ons-list-header>
-         <ons-list-item>
-         <div class="list-item__left" style="width: 130px">
-         <img src="image/calendar.png" style="width: 60px;height: 60px;align-self: auto">
-         </div>
-         <div class="center">
-         <div class="header" style="padding: 5px;text-align: center;margin-left: 29px">
-         <span>
-         <b>
-         8:00 7/7/2017
-         </b>
-         <b>
-         Go to final exam
-         </b>
-         </span>
-         </div>
-         <div style="text-align: center;margin-left: 29px;padding: 5px">
-         It is a very import day! Do not miss!
-         </div>
-         <ons-row class="left" style="text-align: center;padding:5px;width: 260px;height: 50px">
-         <ons-col>
-         <ons-button style="background-color: #FFFFFF;border-color: black">
-         <ons-icon icon="ion-android-star" style="color: black" size="25px"></ons-icon>
-         </ons-button>
-         </ons-col>
-         <ons-col>
-         <ons-button style="background-color: #FFFFFF">
-         <ons-icon icon="ion-android-alarm-clock" style="color: black" size="25px"></ons-icon>
-         </ons-button>
-         </ons-col>
-         <ons-col>
-         <ons-button style="background-color: #FFFFFF">
-         <ons-icon icon="ion-android-notifications" style="color: black" size="25px"></ons-icon>
-         </ons-button>
-         </ons-col>
-         </ons-row>
-         </div>
-         </ons-list-item>
-         </ons-list>
+    //catch error from pushEventPage
+    try {
+        if (event.target.id === 'eventPage') {
+            /* original html
+             <ons-list>
+             <ons-list-header>Event Name</ons-list-header>
+             <ons-list-item>
+             <div class="list-item__left" style="width: 130px">
+             <img src="image/calendar.png" style="width: 60px;height: 60px;align-self: auto">
+             </div>
+             <div class="center">
+             <div class="header" style="padding: 5px;text-align: center;margin-left: 29px">
+             <span>
+             <b>
+             8:00 7/7/2017
+             </b>
+             <b>
+             Go to final exam
+             </b>
+             </span>
+             </div>
+             <div style="text-align: center;margin-left: 29px;padding: 5px">
+             It is a very import day! Do not miss!
+             </div>
+             <ons-row class="left" style="text-align: center;padding:5px;width: 260px;height: 50px">
+             <ons-col>
+             <ons-button style="background-color: #FFFFFF;border-color: black">
+             <ons-icon icon="ion-android-star" style="color: black" size="25px"></ons-icon>
+             </ons-button>
+             </ons-col>
+             <ons-col>
+             <ons-button style="background-color: #FFFFFF">
+             <ons-icon icon="ion-android-alarm-clock" style="color: black" size="25px"></ons-icon>
+             </ons-button>
+             </ons-col>
+             <ons-col>
+             <ons-button style="background-color: #FFFFFF">
+             <ons-icon icon="ion-android-notifications" style="color: black" size="25px"></ons-icon>
+             </ons-button>
+             </ons-col>
+             </ons-row>
+             </div>
+             </ons-list-item>
+             </ons-list>
 
-        * */
-        /* this is the nav bar */
-        var page=(ons._util.createElement('<ons-toolbar></ons-toolbar>'));
-        page.appendChild(ons._util.createElement('<div class="left"><ons-back-button>Back</ons-back-button></div>'));
-        // console.log($("#eventPage").length);
-        $("#eventPage .page__content").append(page);
+             * */
+            /* this is the nav bar */
+            var page=(ons._util.createElement('<ons-toolbar></ons-toolbar>'));
+            page.appendChild(ons._util.createElement('<div class="left"><ons-back-button>Back</ons-back-button></div>'));
+            // console.log($("#eventPage").length);
+            $("#eventPage .page__content").append(page);
 
-        /* this is the detail list */
-        var list=ons._util.createElement('<ons-list style="margin-top:44px"></ons-list>');
-        list.appendChild(ons._util.createElement('<ons-list-header>Event Name</ons-list-header>'));
-        var item=ons._util.createElement('<ons-list-item></ons-list-item>');
-        list.appendChild(item);
-        var photoDiv=ons._util.createElement('<div class="left" style="width: 130px"></div>');
-        item.appendChild(photoDiv);
-        photoDiv.appendChild(ons._util.createElement('<img src="image/calendar.png" style="width: 60px;height: 60px;align-self: auto">'));
-        var mainDiv=ons._util.createElement('<div class="center"></div>');
-        item.appendChild(mainDiv);
-        var timeDiv=ons._util.createElement('<div class="header" style="padding: 5px;text-align: center;margin-left: 29px"></div>');
-        mainDiv.appendChild(timeDiv);
-        var idSection = event.target.data.idSection;
-        var idItem = event.target.data.idItem;
-        var time=10*event.target.data.idSection+event.target.data.idItem-1;
-        if (idItem===2){
-            timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+event.target.data.idItem*3+'/'+event.target.data.idSection*4+'/2017 </b><b>Have a big date with Natasha</b></span>'));
-            mainDiv.appendChild(ons._util.createElement('<div style="text-align: center;margin-left: 29px;padding: 5px">I must on time !</div>'));
-        }//event 2
-        else if(idSection===2&&idItem===4){
-            timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+event.target.data.idItem*3+'/'+event.target.data.idSection*4+'/2017 </b><b>Go to airport to pick Jason</b></span>'));
-            mainDiv.appendChild(ons._util.createElement('<div style="text-align: center;margin-left: 29px;padding: 5px">I can late a little bit, so expensive park in airport.</div>'));
-        }//event 3
-        else{
-            timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+event.target.data.idItem*3+'/'+event.target.data.idSection*4+'/2017 </b><b>Go to final exam</b></span>'));
-            mainDiv.appendChild(ons._util.createElement('<div style="text-align: center;margin-left: 29px;padding: 5px">It is a very import day! Do not miss!</div>'));
+            /* this is the detail list */
+            var list=ons._util.createElement('<ons-list style="margin-top:44px"></ons-list>');
+            list.appendChild(ons._util.createElement('<ons-list-header>Event Name</ons-list-header>'));
+            var item=ons._util.createElement('<ons-list-item></ons-list-item>');
+            list.appendChild(item);
+            var photoDiv=ons._util.createElement('<div class="left" style="width: 130px"></div>');
+            item.appendChild(photoDiv);
+            photoDiv.appendChild(ons._util.createElement('<img src="image/calendar.png" style="width: 60px;height: 60px;align-self: auto">'));
+            var mainDiv=ons._util.createElement('<div class="center"></div>');
+            item.appendChild(mainDiv);
+            var timeDiv=ons._util.createElement('<div class="left" style="padding: 5px;text-align: left;margin-left: 29px"></div>');
+            mainDiv.appendChild(timeDiv);
+            var idSection = event.target.data.idSection;
+            var idItem = event.target.data.idItem;
+            var time=10*event.target.data.idSection+event.target.data.idItem-1;
+            if (idItem===2){
+                timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+event.target.data.idItem*3+'/'+event.target.data.idSection*4+'/2017 </b><b>Have a big date with Natasha</b></span>'));
+                mainDiv.appendChild(ons._util.createElement('<div style="text-align: left;margin-left: 29px;padding: 5px;width:280px">I must on time !</div>'));
+            }//event 2
+            else if(idSection===2&&idItem===4){
+                timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+event.target.data.idItem*3+'/'+event.target.data.idSection*4+'/2017 </b><b>Go to airport to pick Jason</b></span>'));
+                mainDiv.appendChild(ons._util.createElement('<div style="text-align: left;margin-left: 29px;padding: 5px;width: 280px">I can late a little bit, so expensive park in airport.</div>'));
+            }//event 3
+            else{
+                timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+event.target.data.idItem*3+'/'+event.target.data.idSection*4+'/2017 </b><b>Go to final exam</b></span>'));
+                mainDiv.appendChild(ons._util.createElement('<div style="text-align: left;margin-left: 29px;padding: 5px;width: 280px">It is a very import day! Do not miss!</div>'));
+            }
+
+            var row=ons._util.createElement('<ons-row class="left" style="text-align: left;padding:5px;width: 260px;height: 50px;margin-left: 29px"></ons-row>');
+            mainDiv.appendChild(row);
+            //button 1
+            var col1=ons._util.createElement('<ons-col></ons-col>');
+            row.appendChild(col1);
+            var button1=ons._util.createElement('<ons-button style="background-color: #FFFFFF;border-color: black"></ons-button>');
+            col1.appendChild(button1);
+            button1.appendChild(ons._util.createElement('<ons-icon icon="ion-android-star" style="color: black" size="25px"></ons-icon>'));
+
+            //button 2
+            var col2=ons._util.createElement('<ons-col></ons-col>');
+            row.appendChild(col2);
+            var button2=ons._util.createElement('<ons-button style="background-color: #FFFFFF;border-color: black"></ons-button>');
+            col2.appendChild(button2);
+            button2.appendChild(ons._util.createElement('<ons-icon icon="ion-android-alarm-clock" style="color: black" size="25px"></ons-icon>'));
+
+            //button 3
+            var col3=ons._util.createElement('<ons-col></ons-col>');
+            row.appendChild(col3);
+            var button3=ons._util.createElement('<ons-button style="background-color: #FFFFFF;border-color: black"></ons-button>');
+            col3.appendChild(button3);
+            button3.appendChild(ons._util.createElement('<ons-icon icon="ion-android-notifications" style="color: black" size="25px"></ons-icon>'));
+
+            $("#eventPage .page__content").append(list);
         }
-
-        var row=ons._util.createElement('<ons-row class="left" style="text-align: center;padding:5px;width: 260px;height: 50px"></ons-row>');
-        mainDiv.appendChild(row);
-        //button 1
-        var col1=ons._util.createElement('<ons-col></ons-col>');
-        row.appendChild(col1);
-        var button1=ons._util.createElement('<ons-button style="background-color: #FFFFFF;border-color: black"></ons-button>');
-        col1.appendChild(button1);
-        button1.appendChild(ons._util.createElement('<ons-icon icon="ion-android-star" style="color: black" size="25px"></ons-icon>'));
-
-        //button 2
-        var col2=ons._util.createElement('<ons-col></ons-col>');
-        row.appendChild(col2);
-        var button2=ons._util.createElement('<ons-button style="background-color: #FFFFFF;border-color: black"></ons-button>');
-        col2.appendChild(button2);
-        button2.appendChild(ons._util.createElement('<ons-icon icon="ion-android-alarm-clock" style="color: black" size="25px"></ons-icon>'));
-
-        //button 3
-        var col3=ons._util.createElement('<ons-col></ons-col>');
-        row.appendChild(col3);
-        var button3=ons._util.createElement('<ons-button style="background-color: #FFFFFF;border-color: black"></ons-button>');
-        col3.appendChild(button3);
-        button3.appendChild(ons._util.createElement('<ons-icon icon="ion-android-notifications" style="color: black" size="25px"></ons-icon>'));
-
-        $("#eventPage .page__content").append(list);
+    }catch (err){
+        errorArray.push(err);
     }
 
-    if (event.target.id === 'loginPage') {
-        var outDiv=ons._util.createElement('<div class="block"></div>');
-        var p1=ons._util.createElement('<p></p>');
-        outDiv.appendChild(p1);
-        // p1.appendChild(ons._util.createElement('<div class="center"><ons-icon size="50px" style="color:#62b0ff" icon="ion-android-happy" class="list-item__icon"></ons-icon></div>'));
-        p1.appendChild(ons._util.createElement('<div class="center"><img src="../image/calendar.png"></div>'));
-        p1.appendChild(ons._util.createElement('<div class="center"><ons-input id="username" style="width:250px" modifier="underbar" maxlenth="30" placeholder="Username" float></ons-input></div>'));
-        outDiv.appendChild(ons._util.createElement('<p><ons-input id="password" style="width:250px"modifier="underbar" type="password" placeholder="Password" float></ons-input></p>'));
-        outDiv.appendChild(ons._util.createElement('<p class="center" style="margin-top: 20px"><ons-button style="width:280px" onclick="homeNavigator.popPage()">Sign in</ons-button></p>'));
-        outDiv.appendChild(ons._util.createElement('<p><ons-button modifier="quiet">Forget password?</ons-button><ons-button modifier="quiet" style="margin-top: 1px">Register</ons-button></p>'));
-        $("#loginPage .page__content").append(outDiv);
+    //catch error from pushLoginPage
+    try {
+        if (event.target.id === 'loginPage') {
+            var outDiv=ons._util.createElement('<div class="block"></div>');
+            var p1=ons._util.createElement('<p></p>');
+            outDiv.appendChild(p1);
+            // p1.appendChild(ons._util.createElement('<div class="center"><ons-icon size="50px" style="color:#62b0ff" icon="ion-android-happy" class="list-item__icon"></ons-icon></div>'));
+            p1.appendChild(ons._util.createElement('<div class="center"><ons-icon icon="ion-ios-calendar-outline" style="color:#00ade5" size="70px"></ons-icon></div>'));
+            p1.appendChild(ons._util.createElement('<div class="center"><ons-input id="username" style="width:250px" modifier="underbar" maxlenth="30" placeholder="Username" float></ons-input></div>'));
+            outDiv.appendChild(ons._util.createElement('<p><ons-input id="password" style="width:250px"modifier="underbar" type="password" placeholder="Password" float></ons-input></p>'));
+            outDiv.appendChild(ons._util.createElement('<p class="center" style="margin-top: 20px"><ons-button style="width:280px" onclick="homeNavigator.popPage()">Sign in</ons-button></p>'));
+            outDiv.appendChild(ons._util.createElement('<p><ons-button modifier="quiet">Forget password?</ons-button><ons-button modifier="quiet" style="margin-top: 1px">Register</ons-button></p>'));
+            $("#loginPage .page__content").append(outDiv);
+        }
+    }catch (err){
+        errorArray.push(err);
     }
 
-    if (event.target.id === 'newEvent') {
-        /* original html code
-        * <ons-list>
-            <ons-list-header>Event input</ons-list-header>
-                <ons-list-item class="input-items">
-                    <div class="left">
-                        <ons-icon icon="ion-android-create" class="list-item__icon"></ons-icon>
-                    </div>
-                <label class="center">
-                    <ons-input id="name-input" float maxlength="30" placeholder="Event"></ons-input>
-                </label>
-                </ons-list-item>
-                <ons-list-item>
-                    <label class="left">Select the month</label>
-                    <ons-select id="choose-sel" onchange="editSelects(event)">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </ons-select>
-                </ons-list-item>
-                <ons-list-item>
-                    <label class="left">Select the day</label>
-                    <ons-select id="choose-sel" onchange="editSelects(event)">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </ons-select>
-                </ons-list-item>
-            </ons-list>
-            <div style="text-align: center;padding: 8px;">
-                 <ons-button style="width:230px" onclick="clickText()">Create</ons-button>
-            </div>
-        */
-        var outDiv=ons._util.createElement('<div></div>');
-        var page=(ons._util.createElement('<ons-toolbar></ons-toolbar>'));
-        outDiv.appendChild(page);
-        page.appendChild(ons._util.createElement('<div class="center">New Event</div>'));
-        page.appendChild(ons._util.createElement('<div class="left"><ons-back-button>Back</ons-back-button></div>'));
+    //catch error from pushNewEvent
+    try {
+        if (event.target.id === 'newEvent') {
+            /* original html code
+             * <ons-list>
+             <ons-list-header>Event input</ons-list-header>
+             <ons-list-item class="input-items">
+             <div class="left">
+             <ons-icon icon="ion-android-create" class="list-item__icon"></ons-icon>
+             </div>
+             <label class="center">
+             <ons-input id="name-input" float maxlength="30" placeholder="Event"></ons-input>
+             </label>
+             </ons-list-item>
+             <ons-list-item>
+             <label class="left">Select the month</label>
+             <ons-select id="choose-sel" onchange="editSelects(event)">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+             </ons-select>
+             </ons-list-item>
+             <ons-list-item>
+             <label class="left">Select the day</label>
+             <ons-select id="choose-sel" onchange="editSelects(event)">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             </ons-select>
+             </ons-list-item>
+             </ons-list>
+             <div style="text-align: center;padding: 8px;">
+             <ons-button style="width:230px" onclick="clickText()">Create</ons-button>
+             </div>
+             */
+            var outDiv=ons._util.createElement('<div></div>');
+            var page=(ons._util.createElement('<ons-toolbar></ons-toolbar>'));
+            outDiv.appendChild(page);
+            page.appendChild(ons._util.createElement('<div class="center">New Event</div>'));
+            page.appendChild(ons._util.createElement('<div class="left"><ons-back-button>Back</ons-back-button></div>'));
 
-        var list=ons._util.createElement('<ons-list style="margin-top:44px"></ons-list>');
-        outDiv.appendChild(list);
-        var listHeader=ons._util.createElement('<ons-list-header>Event input</ons-list-header>');
-        list.appendChild(listHeader);
-        var eventName=ons._util.createElement('<ons-list-item class="input-items"></ons-list-item>');
-        list.appendChild(eventName);
-        eventName.appendChild(ons._util.createElement('<div class="left"><ons-icon icon="ion-android-create" class="list-item__icon"></ons-icon></div>'));
-        eventName.appendChild(ons._util.createElement('<label class="center"><ons-input id="name-input" float maxlength="30" placeholder="Event"></ons-input></label>'));
+            var list=ons._util.createElement('<ons-list style="margin-top:44px"></ons-list>');
+            outDiv.appendChild(list);
+            var listHeader=ons._util.createElement('<ons-list-header>Event input</ons-list-header>');
+            list.appendChild(listHeader);
+            var eventName=ons._util.createElement('<ons-list-item class="input-items"></ons-list-item>');
+            list.appendChild(eventName);
+            eventName.appendChild(ons._util.createElement('<div class="left"><ons-icon icon="ion-android-create" class="list-item__icon"></ons-icon></div>'));
+            eventName.appendChild(ons._util.createElement('<label class="center"><ons-input id="name-input" float maxlength="30" placeholder="Event"></ons-input></label>'));
 
-        var eventMonth=ons._util.createElement('<ons-list-item></ons-list-item>');
-        list.appendChild(eventMonth);
-        eventMonth.appendChild(ons._util.createElement('<label class="left">Select the month</label>'));
-        var selectBox=ons._util.createElement('<ons-select id="choose-sel" onchange="editSelects(event)"></ons-select>');
-        eventMonth.appendChild(selectBox);
-        for(i1=1;i1<13;i1++){
-            selectBox.appendChild(ons._util.createElement('<option value="'+i1+'">'+i1+'</option>'));
+            var eventMonth=ons._util.createElement('<ons-list-item></ons-list-item>');
+            list.appendChild(eventMonth);
+            eventMonth.appendChild(ons._util.createElement('<label class="left">Select the month</label>'));
+            var selectBox=ons._util.createElement('<ons-select id="choose-sel" onchange="editSelects(event)"></ons-select>');
+            eventMonth.appendChild(selectBox);
+            for(i1=1;i1<13;i1++){
+                selectBox.appendChild(ons._util.createElement('<option value="'+i1+'">'+i1+'</option>'));
+            }
+
+            var eventDay=ons._util.createElement('<ons-list-item></ons-list-item>');
+            list.appendChild(eventDay);
+            eventDay.appendChild(ons._util.createElement('<label class="left">Select the day</label>'));
+            var daySelectBox=ons._util.createElement('<ons-select id="choose-sel" onchange="editSelects(event)"></ons-select>');
+            eventDay.appendChild(daySelectBox);
+            for(i2=1;i2<32;i2++){
+                daySelectBox.appendChild(ons._util.createElement('<option value="'+i2+'">'+i2+'</option>'));
+            }
+
+            var okButton=ons._util.createElement('<div style="text-align: center;padding: 8px;"><ons-button style="width:230px" onclick="dialogControl(2)">Create</ons-button></div>');
+            outDiv.appendChild(okButton);
+            $("#newEvent .page__content").append(outDiv);
+
         }
-
-        var eventDay=ons._util.createElement('<ons-list-item></ons-list-item>');
-        list.appendChild(eventDay);
-        eventDay.appendChild(ons._util.createElement('<label class="left">Select the day</label>'));
-        var daySelectBox=ons._util.createElement('<ons-select id="choose-sel" onchange="editSelects(event)"></ons-select>');
-        eventDay.appendChild(daySelectBox);
-        for(i2=1;i2<32;i2++){
-            daySelectBox.appendChild(ons._util.createElement('<option value="'+i2+'">'+i2+'</option>'));
-        }
-
-        var okButton=ons._util.createElement('<div style="text-align: center;padding: 8px;"><ons-button style="width:230px" onclick="dialogControl(2)">Create</ons-button></div>');
-        outDiv.appendChild(okButton);
-        $("#newEvent .page__content").append(outDiv);
-
-        if (event.target.id === 'dialog'){
-
-        }
+    }catch (err){
+        errorArray.push(err);
     }
 
+    //catch error from pushError
+    try {
+        if (event.target.id === 'errorPage'){
+            var outDiv=ons._util.createElement('<div></div>');
+            var page=(ons._util.createElement('<ons-toolbar></ons-toolbar>'));
+            outDiv.appendChild(page);
+            page.appendChild(ons._util.createElement('<div class="center">Exception</div>'));
+            page.appendChild(ons._util.createElement('<div class="left"><ons-back-button>Back</ons-back-button></div>'));
+            console.log(errorArray.length);
+            var errorDiv=ons._util.createElement('<div style="margin-top: 49px;margin-left: 8px"></div>');
+            outDiv.appendChild(errorDiv);
+            for(i=0;i<errorArray.length+1;i++){
+                if(errorArray.length===0){
+                    errorDiv.appendChild(ons._util.createElement('<p>No errors, prefect!</p>'));
+                }else{
+                    errorDiv.appendChild(ons._util.createElement('<p>'+errorArray[i]+'</p>'));
+                }
+            }
+            $("#errorPage .page__content").append(outDiv);
+        }
+    }catch (err){
+        errorArray.push(err);
+    }
 });
 
 function homePageTranslate(){
@@ -303,6 +337,11 @@ function settingTranslate() {
     $("#template3").append(okButtonDiv);
 }
 
+//function to load about me page
+function trnasferAboutme(){
+
+}
+
 // this function is to respend the click event and push a new page
 function pushEventPage(idSection,idItem) {
     homeNavigator.pushPage('eventPage.html',{data:{idSection:idSection, idItem:idItem}});
@@ -361,24 +400,24 @@ function showEvent(idSection,idItem){
     photoDiv.appendChild(ons._util.createElement('<img src="image/calendar.png" style="width: 60px;height: 60px;align-self: auto">'));
     var mainDiv=ons._util.createElement('<div class="center"></div>');
     item.appendChild(mainDiv);
-    var timeDiv=ons._util.createElement('<div class="header" style="padding: 5px;text-align: center;margin-left: 29px"></div>');
+    var timeDiv=ons._util.createElement('<div class="left" style="padding: 5px;text-align: left;margin-left: 29px;width:280px"></div>');
     mainDiv.appendChild(timeDiv);
     var time=10 * idSection + idItem - 1;
     //event 1
     if (idItem===2){
-        timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+idItem*3+'/'+idSection*4+'/2017 </b><b>Have a big date with Natasha</b></span>'));
-        mainDiv.appendChild(ons._util.createElement('<div style="text-align: center;margin-left: 29px;padding: 5px">I must on time !</div>'));
+        timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+idItem*3+'/'+idSection*4+'/2017 </b></br><b>Have a big date with Natasha</b></span></span>'));
+        mainDiv.appendChild(ons._util.createElement('<div class="left" style="text-align: left;margin-left: 29px;padding: 5px;width:280px">I must on time !</div>'));
     }//event 2
     else if(idSection===2&&idItem===4){
-        timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+idItem*3+'/'+idSection*4+'/2017 </b><b>Go to airport to pick Jason</b></span>'));
-        mainDiv.appendChild(ons._util.createElement('<div style="text-align: center;margin-left: 29px;padding: 5px">I can late a little bit, so expensive park in airport.</div>'));
+        timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+idItem*3+'/'+idSection*4+'/2017 </b></br><b>Go to airport to pick Jason</b></span>'));
+        mainDiv.appendChild(ons._util.createElement('<div style="text-align: left;margin-left: 29px;padding: 5px">I can late a little bit, so expensive park in airport.</div>'));
     }//event 3
     else{
-        timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+idItem*3+'/'+idSection*4+'/2017 </b><b>Go to final exam</b></span>'));
-        mainDiv.appendChild(ons._util.createElement('<div style="text-align: center;margin-left: 29px;padding: 5px">It is a very import day! Do not miss!</div>'));
+        timeDiv.appendChild(ons._util.createElement('<span><b>'+time+':00 '+idItem*3+'/'+idSection*4+'/2017 </b></br><b>Go to final exam</b></span>'));
+        mainDiv.appendChild(ons._util.createElement('<div style="text-align: left;margin-left: 29px;padding: 5px">It is a very import day! Do not miss!</div>'));
     }
 
-    var row=ons._util.createElement('<ons-row class="left" style="text-align: center;padding:5px;width: 260px;height: 50px"></ons-row>');
+    var row=ons._util.createElement('<ons-row class="left" style="text-align: left;padding:5px;width: 260px;height: 50px;margin-left: 29px"></ons-row>');
     mainDiv.appendChild(row);
     //button 1
     var col1=ons._util.createElement('<ons-col></ons-col>');
@@ -405,10 +444,23 @@ function showEvent(idSection,idItem){
     return item;
 }
 
+// here is a var to save the errors
+var errorArray = new Array();
+
+//here is a error pushPage function
+function pushError(){
+    homeNavigator.pushPage('errorPage.html');
+}
+
 $(document).ready(function () {
-    homePageTranslate();
-   calendarTranslate();
-   settingTranslate();
-   pushLoginPage();
+    try {
+        homePageTranslate();
+        calendarTranslate();
+        settingTranslate();
+        pushLoginPage();
+        // var uuu=new happy();
+    }catch (err){
+        errorArray.push(err);
+    }
 });
 

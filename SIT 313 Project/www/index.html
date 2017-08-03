@@ -3,6 +3,7 @@
 	<link rel="stylesheet" href="css/onsenui.css">
 	<link rel="stylesheet" href="css/onsen-css-components.min.css">
 	<link rel="stylesheet" href="css/myCSS.css">
+	<script src="cordova.js"></script>
 	<script src="js/onsenui.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/index.js"></script>
@@ -51,7 +52,30 @@
 <template id="aboutMe.html">
 	<ons-page id="aboutMe">
 		<div id="template4">
+			<ons-list>
+				<ons-list-header><div style="font-size: larger">About me Page</div></ons-list-header>
 
+				<ons-list-item>SIT 313 project</ons-list-item>
+
+				<ons-list-item>Project type: Calendar</ons-list-item>
+
+				<ons-list-item>Name: Rongjuncheng Zhang</ons-list-item>
+
+				<ons-list-item>Student ID: 216036505</ons-list-item>
+
+				<ons-list-item>Email: zhangrp@deakin.com.au</ons-list-item>
+
+				<ons-list-header><div style="font-size: larger">References</div></ons-list-header>
+
+				<ons-list-item>UI from: Onsen UI <"https://onsen.io/"></ons-list-item>
+
+				<ons-list-item>Icno from: Onsen Icon<"http://ionicons.com/"></ons-list-item>
+
+				<ons-list-item>Calendar picture from: Easyicno<"http://www.easyicon.net/1208496-calendar_icon.html"></ons-list-item>
+
+				<ons-list-header>Error Report</ons-list-header>
+				<ons-list-item tappable onclick="pushError()">Error report</ons-list-item>
+			</ons-list>
 		</div>
 	</ons-page>
 </template>
@@ -70,6 +94,12 @@
 
 <template id="newEvent.html">
 	<ons-page id="newEvent">
+
+	</ons-page>
+</template>
+
+<template id="errorPage.html">
+	<ons-page id="errorPage">
 
 	</ons-page>
 </template>
