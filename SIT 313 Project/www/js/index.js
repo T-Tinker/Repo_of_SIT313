@@ -339,7 +339,48 @@ function settingTranslate() {
 
 //function to load about me page
 function trnasferAboutme(){
+    /* orginal html code here
+     <ons-list>
+     <ons-list-header><div style="font-size: larger">About me Page</div></ons-list-header>
 
+     <ons-list-item>SIT 313 project</ons-list-item>
+
+     <ons-list-item>Project type: Calendar</ons-list-item>
+
+     <ons-list-item>Name: Rongjuncheng Zhang</ons-list-item>
+
+     <ons-list-item>Student ID: 216036505</ons-list-item>
+
+     <ons-list-item>Email: zhangrp@deakin.com.au</ons-list-item>
+
+     <ons-list-header><div style="font-size: larger">References</div></ons-list-header>
+
+     <ons-list-item>UI from: Onsen UI <"https://onsen.io/"></ons-list-item>
+
+     <ons-list-item>Icno from: Onsen Icon<"http://ionicons.com/"></ons-list-item>
+
+     <ons-list-item>Calendar picture from: Easyicno<"http://www.easyicon.net/1208496-calendar_icon.html"></ons-list-item>
+
+     <ons-list-header>Error Report</ons-list-header>
+
+     <ons-list-item tappable onclick="pushError()">Error report</ons-list-item>
+     </ons-list>
+    */
+    var list=ons._util.createElement('<ons-list></ons-list>');
+    list.appendChild(ons._util.createElement('<ons-list-header><div style="font-size: larger">About me Page</div></ons-list-header>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>SIT 313 project</ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>Project type: Calendar</ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>Name: Rongjuncheng Zhang</ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>Student ID: 216036505</ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>Email: zhangrp@deakin.com.au</ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-header><div style="font-size: larger">References</div></ons-list-header>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>UI from: Onsen UI <"https://onsen.io/"></ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>Icno from: Onsen Icon<"http://ionicons.com/"></ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-item>Calendar picture from: Easyicno<"http://www.easyicon.net/1208496-calendar_icon.html"></ons-list-item>'));
+    list.appendChild(ons._util.createElement('<ons-list-header>Error Report</ons-list-header>'));
+    list.appendChild(ons._util.createElement('<ons-list-item tappable onclick="pushError()">Error report</ons-list-item>'));
+
+    $("#template4").append(list);
 }
 
 // this function is to respend the click event and push a new page
@@ -457,6 +498,7 @@ $(document).ready(function () {
         homePageTranslate();
         calendarTranslate();
         settingTranslate();
+        trnasferAboutme();
         pushLoginPage();
         // var uuu=new happy();
     }catch (err){
