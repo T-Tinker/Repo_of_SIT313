@@ -2,6 +2,7 @@
 <head>
 	<link rel="stylesheet" href="css/onsenui.css">
 	<link rel="stylesheet" href="css/onsen-css-components.min.css">
+	<link rel="stylesheet" href="css/myCSS.css">
 	<script src="js/onsenui.min.js"></script>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/index.js"></script>
@@ -9,13 +10,16 @@
 <body>
 <ons-navigator id="homeNavigator">
 	<ons-page>
-		<ons-toolbar>
+		<ons-toolbar id="toolbar">
+			<div class="left"></div>
 			<div class="center">Calendar</div>
+			<div class="right" style="padding: 5px" id="rightButton"></div>
 		</ons-toolbar>
 		<ons-tabbar position="auto">
 			<ons-tab page="homeNavigator.html" active icon="ion-home" label="Home"></ons-tab>
 			<ons-tab icon="ion-calendar" label="Calendar" badge="" page="calendar.html"></ons-tab>
 			<ons-tab icon="ion-ios-cog" label="Settings" page="settings.html"></ons-tab>
+			<ons-tab icon="ion-android-person" label="About me" page="aboutMe.html"></ons-tab>
 		</ons-tabbar>
 	</ons-page>
 </ons-navigator>
@@ -37,11 +41,48 @@
 </template>
 
 <template id="settings.html">
-	<ons-page id="calendar">
+	<ons-page id="settings">
 		<div id="template3">
 
 		</div>
 	</ons-page>
 </template>
+
+<template id="aboutMe.html">
+	<ons-page id="aboutMe">
+		<div id="template4">
+
+		</div>
+	</ons-page>
+</template>
+
+<template id="eventPage.html">
+	<ons-page id="eventPage">
+
+	</ons-page>
+</template>
+
+<template id="loginPage.html">
+	<ons-page id="loginPage">
+
+	</ons-page>
+</template>
+
+<template id="newEvent.html">
+	<ons-page id="newEvent">
+
+	</ons-page>
+</template>
+
+<ons-alert-dialog id="dialog">
+	<div class="alert-dialog-title">Notification</div>
+	<div class="alert-dialog-content">
+		Do you want create this new event?
+	</div>
+	<div class="alert-dialog-footer">
+		<button class="alert-dialog-button" onclick="dialogControl(1)">OK</button>
+		<button class="alert-dialog-button" onclick="dialogControl(0)">Cancel</button>
+	</div>
+</ons-alert-dialog>
 </body>
 </html>
